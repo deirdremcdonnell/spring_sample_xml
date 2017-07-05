@@ -5,14 +5,23 @@
 
     <description>"description???"</description>
     <bean name="customerRepositoryBean"
-          class="com.pluralsight.repository.AnotherCustomerRepositoryImpl"
+          class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"
 
     />
     <bean name="customerServiceBean"
           class="com.pluralsight.service.CustomerServiceImpl"
-    autowire="byName">
+          autowire="byName">
         <property name="customerRepository" ref="customerRepositoryBean" />
     </bean>
-
+    <bean id="kb"
+          class="java.lang.Integer">
+        <constructor-arg value="1024"/>
+    </bean>
+    <bean id="message"
+          class="com.pluralsight.model.DefaultMessage">
+        <constructor-arg value="Spring is fun apparently :)"/>
+        <property name="message" value="DEP INJECTION USING SET"></property>
+        <property name="COUNTERMETHOD" ref="kb"></property>
+    </bean>
 
 </beans>

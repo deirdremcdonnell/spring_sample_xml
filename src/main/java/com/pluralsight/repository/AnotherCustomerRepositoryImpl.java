@@ -9,7 +9,6 @@ import java.util.List;
  * AnotherCustomerRepositoryImpl
  */
 public class AnotherCustomerRepositoryImpl implements CustomerRepository {
-    @Override
     public List<Customer> findAll() {
         List<Customer> customers= new ArrayList<Customer>();
         Customer customer = new Customer();
