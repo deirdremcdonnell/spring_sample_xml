@@ -15,7 +15,7 @@ public class CustomerServiceImpl implements CustomerService {
 //        this.customerRepository = customerRepository;
 //    }
 
-    public void setFoo(CustomerRepository customerRepositoryd) {
+    public void setCustomerRepository(CustomerRepository customerRepositoryd) {
         this.customerRepository = customerRepositoryd;
     }
 
