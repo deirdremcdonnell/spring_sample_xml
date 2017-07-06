@@ -19,11 +19,18 @@ public class Application {
         // hardcoded ref
          //CustomerService service = new CustomerServiceImpl();
         ApplicationContext appContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-        CustomerService service = appContext.getBean("customerServiceBean", CustomerService.class);
+        final String[] beanDefinitionNames = appContext.getBeanDefinitionNames();
+        for (int i = 0; i < beanDefinitionNames.length; i++) {
+            String beanDefinitionName = beanDefinitionNames[i];
+            System.out.println("Bean name ["+i+"] = " + beanDefinitionName);
+        };
+        final String customerServiceBeanName = appContext.containsBean("customerServiceBean") ? "customerServiceBean" : "customerService";
+        CustomerService service = appContext.getBean(customerServiceBeanName, CustomerService.class);
 
         System.out.println("app name = " + appContext.getApplicationName());
-        System.out.println("bean for customer service = " + appContext.getBean("customerServiceBean", CustomerService.class));
-        System.out.println("bean for customer repos= " + appContext.getBean("customerRepositoryBean", CustomerRepository.class));
+        System.out.println("bean for customer service = " + appContext.getBean(customerServiceBeanName, CustomerService.class));
+        final String customerRepositoryBean =  appContext.containsBean("customerRepositoryBean") ? "customerRepositoryBean" : "customerRepository";
+        System.out.println("bean for customer repos= " + appContext.getBean(customerRepositoryBean, CustomerRepository.class));
         System.out.println("bean for message repos= " + appContext.getBean("message", DefaultMessage.class));
 
         final List<Customer> customers = service.findAll();
@@ -32,14 +39,12 @@ public class Application {
         }
 
         Message message = appContext.getBean("message", Message.class);
-        //message.setMessage("rte news");
         System.out.println("Message = " + message.getMessage());
 
         Message defaultMessage = (Message) appContext.getBean("message");
 
         System.out.println("message='" + defaultMessage.getMessage() + "'");
         System.out.println("Message count = " + message.getCOUNTER());
-
     }
 
 }
