@@ -29,7 +29,8 @@ public class Application {
 
         System.out.println("app name = " + appContext.getApplicationName());
         System.out.println("bean for customer service = " + appContext.getBean(customerServiceBeanName, CustomerService.class));
-        final String customerRepositoryBean =  appContext.containsBean("customerRepositoryBean") ? "customerRepositoryBean" : "customerRepository";
+        String customerRepositoryBean =  appContext.containsBean("customerRepositoryBean") ? "customerRepositoryBean" : "customerRepository";
+        customerRepositoryBean = "foo";
         System.out.println("bean for customer repos= " + appContext.getBean(customerRepositoryBean, CustomerRepository.class));
         System.out.println("bean for message repos= " + appContext.getBean("message", DefaultMessage.class));
 

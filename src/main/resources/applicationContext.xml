@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <description>"description???"</description>
-    <bean name="customerRepository"
+    <bean name="foo"
           class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"
     />
     <bean name="customerServiceBean"
