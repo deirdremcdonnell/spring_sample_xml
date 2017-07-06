@@ -6,17 +6,18 @@
     <description>"description???"</description>
     <bean name="customerRepositoryBean"
           class="com.pluralsight.repository.HibernateCustomerRepositoryImpl"
-
     />
     <bean name="customerServiceBean"
           class="com.pluralsight.service.CustomerServiceImpl"
-          autowire="byName">
-        <property name="customerRepository" ref="customerRepositoryBean" />
+          autowire="byType">
+        <!--<constructor-arg index="0" ref="customerRepositoryBean"></constructor-arg>-->
+        <!--<property name="customerRepository" ref="customerRepositoryBean" />-->
     </bean>
     <bean id="kb"
           class="java.lang.Integer">
         <constructor-arg value="1024"/>
     </bean>
+
     <bean id="message"
           class="com.pluralsight.model.DefaultMessage">
         <constructor-arg value="Spring is fun apparently :)"/>

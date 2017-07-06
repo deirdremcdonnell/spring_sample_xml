@@ -2,6 +2,7 @@ package com.pluralsight.service;
 
 import com.pluralsight.model.Customer;
 import com.pluralsight.repository.CustomerRepository;
+import com.pluralsight.repository.HibernateCustomerRepositoryImpl;
 
 import java.util.List;
 
@@ -10,6 +11,10 @@ public class CustomerServiceImpl implements CustomerService {
 
     //private CustomerRepository customerRepository = new HibernateCustomerRepositoryImpl(); //hardcoded ref
     private CustomerRepository customerRepository;
+
+//    public CustomerServiceImpl(CustomerRepository customerRepository) {
+//        this.customerRepository = customerRepository;
+//    }
 
     public void setCustomerRepository(CustomerRepository customerRepositoryd) {
         this.customerRepository = customerRepositoryd;
