@@ -5,6 +5,7 @@ import com.pluralsight.repository.CustomerRepository;
 import com.pluralsight.service.CustomerService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -24,15 +25,16 @@ public class Application {
             String beanDefinitionName = beanDefinitionNames[i];
             System.out.println("Bean name ["+i+"] = " + beanDefinitionName);
         };
-        final String customerServiceBeanName = appContext.containsBean("customerServiceBean") ? "customerServiceBean" : "customerService";
-        CustomerService service = appContext.getBean(customerServiceBeanName, CustomerService.class);
 
         System.out.println("app name = " + appContext.getApplicationName());
-        System.out.println("bean for customer service = " + appContext.getBean(customerServiceBeanName, CustomerService.class));
-        String customerRepositoryBean =  appContext.containsBean("customerRepositoryBean") ? "customerRepositoryBean" : "customerRepository";
-        System.out.println("bean for customer repos= " + appContext.getBean(customerRepositoryBean, CustomerRepository.class));
+//        Assert.isTrue(appContext.containsBean("customerService"), "bean with name=customerService does not exist in applicationContext");
+  //      Assert.isTrue(appContext.containsBean("customerRepository"), "bean with name=customerRepository does not exist in applicationContext");
+//        System.out.println("bean for customer service = " + appContext.getBean("customerService", CustomerService.class));
+//        System.out.println("bean for customer repos= " + appContext.getBean("customerRepository", CustomerRepository.class));
         System.out.println("bean for message repos= " + appContext.getBean("message", DefaultMessage.class));
 
+
+        CustomerService service = appContext.getBean("customerService", CustomerService.class);
         final List<Customer> customers = service.findAll();
         for (Customer customer : customers) {
             System.out.println("Name : "+ customer.getFirstName());
